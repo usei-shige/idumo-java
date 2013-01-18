@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+	<!-- special setting -->
+	<property name="android.path" value="/Applications/android-sdk/"/>
+	<property name="android.lib"      value="${android_path}/platforms/android-8/android.jar:${android_path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+	<property name="annotation"   value="${android.path}/tools/support/annotations.jar"/>
+	<property name="java.tools"         value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
+	<property name="java.home"    value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/"/>
+
+	<import file="common.xml"/>
+	
+</project>
+	
