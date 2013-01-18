@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ConsoleVM"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ConsoleModule"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JavaVM"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JavaModule"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
