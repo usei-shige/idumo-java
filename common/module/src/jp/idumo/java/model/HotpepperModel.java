@@ -19,11 +19,10 @@ package jp.idumo.java.model;
 
 import jp.idumo.java.model.IfDataElement.AbstractData;
 import jp.idumo.java.model.element.IfLatLngElement;
-import jp.idumo.java.model.element.IfTextElement;
 import jp.idumo.java.model.raw.NumberRawDataType;
 import jp.idumo.java.model.raw.StringRawDataType;
 
-public class HotpepperModel extends AbstractData implements IfLatLngElement, IfTextElement {
+public class HotpepperModel extends AbstractData implements IfLatLngElement {
 	private static final String NAME = "name";
 	private static final String KANA = "kana";
 	private static final String LAT = "lat";

@@ -15,8 +15,8 @@ import jp.idumo.java.annotation.IDUMOReceiptor;
 import jp.idumo.java.exception.IDUMOException;
 import jp.idumo.java.exec.IfCoreController;
 import jp.idumo.java.model.FlowingData;
+import jp.idumo.java.model.IfDataElement;
 import jp.idumo.java.model.connect.ConnectDataType;
-import jp.idumo.java.model.element.IfTextElement;
 import jp.idumo.java.model.primitive.IfStringPrimitiveElement;
 import jp.idumo.java.parts.IfExecutable;
 import jp.idumo.java.parts.IfReceivable;
@@ -32,7 +32,7 @@ import jp.idumo.java.validator.ReceiveValidatorType;
  * @author Hiroyoshi HOUCHI
  */
 @IDUMOCommon
-@IDUMOReceiptor(receive = IfTextElement.class)
+@IDUMOReceiptor(receive = IfDataElement.class)
 @IDUMOInfo(author = "Hiroyoshi HOUCHI", display = "指定IPに文字列を送信", summary = "")
 public class SendTCPReceiptor implements IfReceivable, IfCoreController, IfExecutable {
 	private String				ip;

@@ -1,13 +1,13 @@
 package jp.idumo.java.android.view;
 
-import jp.idumo.android.core.exec.AndroidComponent;
-import jp.idumo.android.core.exec.AndroidWrapper;
-import jp.idumo.android.core.util.AndroidLogger;
-import jp.idumo.android.parts.receiptor.AndroidMapViewReceiptor;
-import jp.idumo.common.parts.adapter.Number2GPSAdapter;
-import jp.idumo.common.parts.provider.NumberProvider;
-import jp.idumo.core.exception.IDUMOException;
-import jp.idumo.core.util.LogManager;
+import jp.idumo.java.android.core.exec.AndroidComponent;
+import jp.idumo.java.android.core.exec.AndroidWrapper;
+import jp.idumo.java.android.core.util.AndroidLogger;
+import jp.idumo.java.android.parts.receiptor.AndroidMapViewReceiptor;
+import jp.idumo.java.exception.IDUMOException;
+import jp.idumo.java.parts.adapter.Number2GPSAdapter;
+import jp.idumo.java.parts.provider.NumberProvider;
+import jp.idumo.java.util.LogManager;
 
 public class Number2MapView extends AndroidWrapper {
 	@Override
