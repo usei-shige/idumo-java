@@ -10,7 +10,9 @@ public interface IfDataElement {
 
 	RawDataType get(String name);
 
-	public abstract class AbstractData implements IfDataElement, IfTextElement {
+	String getText();
+
+	public abstract class AbstractData implements IfDataElement {
 		private Map<String, RawDataType> raw = new TreeMap<String, RawDataType>();
 
 		public RawDataType add(RawDataType value) {
