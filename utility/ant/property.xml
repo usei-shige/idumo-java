@@ -10,7 +10,7 @@
 	<!-- common setting -->
 
 	<!-- core -->
-	<property name="icore"         value="${root}"/>
+	<property name="icore"         value="${root}/common/"/>
 	
 	<property name="icore.vm"         value="${icore}/vm/"/>
 	<property name="icore.vm.src"     value="${icore.vm}/src/"/>
