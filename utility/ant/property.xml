@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+
+	<!-- global setting -->
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/>
+	<property name="source" value="1.6"/>
+	<property name="root"         value="../../"/>
+
+	<!-- common setting -->
+
+	<!-- core -->
+	<property name="icore"         value="${root}"/>
+	
+	<property name="icore.vm"         value="${icore}/vm/"/>
+	<property name="icore.vm.src"     value="${icore.vm}/src/"/>
+	<property name="icore.vm.bin"     value="${icore.vm}/bin/"/>
+	<property name="icore.vm.lib"     value="${icore.vm}/libs/"/>
+
+	<property name="icore.module"         value="${icore}/module/"/>
+	<property name="icore.module.src"     value="${icore.module}/src/"/>
+	<property name="icore.module.bin"     value="${icore.module}/bin/"/>
+	<property name="icore.module.lib"     value="${icore.module}/libs/"/>
+	
+	<!--  android -->
+	<property name="iandroid"      value="${root}/platform/android/"/>
+	
+	<property name="iandroid.vm"      value="${iandroid}/vm/"/>
+	<property name="iandroid.vm.src"  value="${iandroid.vm}/src/"/>
+	<property name="iandroid.vm.bin"  value="${iandroid.vm}/bin/classes/"/>
+	<property name="iandroid.vm.lib"  value="${iandroid.vm}/libs/"/>
+	<property name="iandroid.vm.res"  value="${iandroid.vm}/res/"/>
+	<property name="iandroid.vm.gen"  value="${iandroid.vm}/gen/"/>
+
+	<property name="iandroid.module"      value="${iandroid}/module/"/>
+	<property name="iandroid.module.src"  value="${iandroid.module}/src/"/>
+	<property name="iandroid.module.bin"  value="${iandroid.module}/bin/classes/"/>
+	<property name="iandroid.module.lib"  value="${iandroid.module}/libs/"/>
+	<property name="iandroid.module.res"  value="${iandroid.module}/res/"/>
+	<property name="iandroid.module.gen"  value="${iandroid.module}/gen/"/>
+	
+	<property name="iandroid.test" value="${iandroid}/test/"/>
+	<property name="iandroid.test.lib" value="${iandroid.test}/libs/"/>
+	
+	
+	<!--  console -->
+	<property name="iconsole"      value="${root}/platform/console/"/>
+	
+	<property name="iconsole.vm"      value="${iconsole}/vm/"/>
+	<property name="iconsole.vm.src"  value="${iconsole.vm}/src/"/>
+	<property name="iconsole.vm.bin"  value="${iconsole.vm}/bin/"/>
+	<property name="iconsole.vm.lib"  value="${iconsole.vm}/libs/"/>
+
+	<property name="iconsole.module"      value="${iconsole}/module/"/>
+	<property name="iconsole.module.src"  value="${iconsole.module}/src/"/>
+	<property name="iconsole.module.bin"  value="${iconsole.module}/bin/"/>
+	<property name="iconsole.module.lib"  value="${iconsole.module}/libs/"/>
+
+	<property name="iconsole.test" value="${iconsole}/test/"/>
+	<property name="iconsole.test.lib" value="${iconsole.test}/libs/"/>
+				
+	
+	<!-- utility -->
+	<property name="iutility"      value="${root}/utility/"/>
+	
+	<property name="iutility.ant"      value="${iutility}/ant/"/>
+	
+	<!-- all -->
+	<property name="src"           value="${icore.vm.src}:${icore.module.src}:${iandroid.vm.src}:${iandroid.module.src}:${iconsole.vm.src}:${iconsole.module.src}"/>
+	<property name="lib"           value="${icore.vm.lib}:${icore.module.lib}:${iandroid.vm.lib}:${iandroid.module.lib}:${iconsole.vm.lib}:${iconsole.module.lib}"/>
+	<property name="bin"           value="${icore.vm.bin}:${icore.module.bin}:${iandroid.vm.bin}:${iandroid.module.bin}:${iconsole.vm.bin}:${iconsole.module.bin}"/>
+	
+	<property name="package"       value="jp.idumo.*"/>
+
+	<!-- doclet -->
+	<property name="doclet"         value="jp.idumo.core.doclet.CreatePartsFile"/>
+	<property name="doclet.android" value="jp.idumo.core.doclet.CreateAndroidSettingFile"/>
+	<property name="doclet.datastructure" value="jp.idumo.core.doclet.CreateDataStructureFile"/>
+	  
+
+	<path id="icore.vm.libpath">
+		<pathelement location="${java.tools}"/>
+		<fileset dir="${icore.vm.lib}" includes="**/*.jar"/>
+	</path>
+	<path id="iandroid.vm.libpath">
+		<pathelement location="${android.path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+		<pathelement location="${icore.vm.bin}"/>
+		<fileset dir="${iandroid.vm.lib}" includes="**/*.jar"/>
+	</path>
+	<path id="iconsole.vm.libpath">
+		<pathelement location="${java.tools}"/>
+		<pathelement location="${icore.vm.bin}"/>
+		<fileset dir="${iconsole.module.lib}" includes="**/*.jar"/>
+	</path>
+		
+	
+	<path id="icore.module.libpath">
+		<pathelement location="${icore.vm.bin}"/>
+	    <pathelement location="${java.tools}"/>
+		<fileset dir="${icore.module.lib}" includes="**/*.jar"/>
+	</path>
+	<path id="iandroid.module.libpath">
+		<pathelement location="${icore.vm.bin}"/>
+		<pathelement location="${icore.module.bin}"/>
+		<pathelement location="${iandroid.vm.bin}"/>
+		<pathelement location="${android.path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+		<fileset dir="${iandroid.module.lib}" includes="**/*.jar"/>
+	</path>
+	<path id="iconsole.module.libpath">
+		<pathelement location="${icore.vm.bin}"/>
+		<pathelement location="${icore.module.bin}"/>
+		<pathelement location="${iconsole.vm.bin}"/>
+	    <pathelement location="${java.tools}"/>
+		<fileset dir="${iconsole.module.lib}" includes="**/*.jar"/>
+	</path>
+	
+	<path id="javadoc.libpath">
+		<pathelement location="${icore.vm.bin}"/>
+		<pathelement location="${icore.module.bin}"/>
+		<pathelement location="${iandroid.vm.bin}"/>
+		<pathelement location="${iandroid.module.bin}"/>
+		<pathelement location="${iconsole.vm.bin}"/>
+		<pathelement location="${iconsole.module.bin}"/>
+	</path>
+	
+</project>
+

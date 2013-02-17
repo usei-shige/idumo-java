@@ -1,118 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
-
-	<!-- global setting -->
-	<property name="debuglevel" value="source,lines,vars"/>
-	<property name="target" value="1.6"/>
-	<property name="source" value="1.6"/>
-	<property name="root"         value="../../"/>
-
-	<!-- common setting -->
-	<property name="icore"         value="${root}/core/"/>
-	<property name="icore.src"     value="${root}/core/src/"/>
-	<property name="icore.bin"     value="${root}/core/bin/"/>
-	<property name="icore.lib"     value="${root}/core/libs/"/>
-
-	<property name="iandroid"      value="${root}/android/"/>
-	<property name="iandroid.src"  value="${root}/android/src/"/>
-	<property name="iandroid.bin"  value="${root}/android/bin/classes/"/>
-	<property name="iandroid.lib"  value="${root}/android/libs/"/>
-	<property name="iandroid.res"  value="${root}/android/res/"/>
-	<property name="iandroid.gen"  value="${root}/android/gen/"/>
-
-	<property name="iconsole"      value="${root}/console/"/>
-	<property name="iconsole.src"  value="${root}/console/src/"/>
-	<property name="iconsole.bin"  value="${root}/console/bin/"/>
-	<property name="iconsole.lib"  value="${root}/console/libs/"/>
-
-	<property name="iutility"      value="${root}/utility/"/>
-
-	<property name="src"           value="${icore.src}:${iandroid.src}:${iconsole.src}"/>
-	<property name="lib"           value="${icore.lib}:${iandroid.lib}:${iconsole.lib}"/>
-	<property name="bin"           value="${icore.bin}:${iandroid.bin}:${iconsole.bin}"/>
-
-	<property name="package"       value="jp.idumo.*"/>
-	<!-- doclet -->
-	<property name="doclet"         value="jp.idumo.core.doclet.CreatePartsFile"/>
-	<property name="doclet.android" value="jp.idumo.core.doclet.CreateAndroidSettingFile"/>
-	<property name="doclet.datastructure" value="jp.idumo.core.doclet.CreateDataStructureFile"/>
+    <import file="property.xml"/>
 	  
-	<path id="icore.libpath">
-		<pathelement location="${java.tools}"/>
-		<fileset dir="${icore.lib}">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
-	<path id="icore.classpath">
-		<pathelement location="${icore.bin}"/>
-	</path>
-
-	<path id="iandroid.libpath">
-		<path refid="icore.classpath"/>
-		<pathelement location="${android.path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
-		<fileset dir="${iandroid.lib}">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
-	<path id="iconsole.libpath">
-		<path refid="icore.classpath"/>
-		<fileset dir="${iconsole.lib}">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
-
-	<path id="javadoc.libpath">
-		<pathelement location="${icore.bin}"/>
-		<pathelement location="${iandroid.bin}"/>
-		<pathelement location="${iconsole.bin}"/>
-	</path>
-	
 	<!-- target -->
 	<target name="clean">
-		<delete dir="${icore.bin}" failonerror="false"/>
-		<delete dir="${iandroid.bin}" failonerror="false"/>
-		<delete dir="${iconsole.bin}" failonerror="false"/>
+		<delete dir="${icore.vm.bin}" failonerror="false"/>
+		<delete dir="${icore.module.bin}" failonerror="false"/>
+		<delete dir="${iandroid.vm.bin}" failonerror="false"/>
+		<delete dir="${iandroid.module.bin}" failonerror="false"/>
+		<delete dir="${iconsole.vm.bin}" failonerror="false"/>
+		<delete dir="${iconsole.module.bin}" failonerror="false"/>
 	</target>
 
 	<target name="compile" depends="clean">
+
+		<!-- core -->
 		<echo message="build core"/>
-		<mkdir dir="${icore.bin}"/>
-		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${icore.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="icore.libpath">
-			<src path="${icore.src}"/>
+		<echo message="| vm"/>		
+		<mkdir dir="${icore.vm.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${icore.vm.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="icore.vm.libpath">
+			<src path="${icore.vm.src}"/>
 			<!--
 			<exclude name="**/*Doclet.java"/>
 			-->
 		</javac>
+		<mkdir dir="${icore.module.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${icore.module.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="icore.module.libpath">
+			<src path="${icore.module.src}"/>
+		</javac>
+				
+		<!-- android -->
 		<echo message="build android"/>
-		<mkdir dir="${iandroid.bin}"/>
-		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iandroid.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iandroid.libpath">
-			<src path="${iandroid.gen}"/>
-			<src path="${iandroid.src}"/>
+		<mkdir dir="${iandroid.vm.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iandroid.vm.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iandroid.vm.libpath">
+			<src path="${iandroid.vm.gen}"/>
+			<src path="${iandroid.vm.src}"/>
 		</javac>
+		
+		<mkdir dir="${iandroid.module.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iandroid.module.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iandroid.module.libpath">
+			<src path="${iandroid.module.gen}"/>
+			<src path="${iandroid.module.src}"/>
+		</javac>
+				
+		<!-- console -->
 		<echo message="build console"/>
-		<mkdir dir="${iconsole.bin}"/>
-		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iconsole.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iconsole.libpath">
-			<src path="${iconsole.src}"/>
+		<mkdir dir="${iconsole.vm.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iconsole.vm.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iconsole.vm.libpath">
+			<src path="${iconsole.vm.src}"/>
 		</javac>
+		<mkdir dir="${iconsole.module.bin}"/>
+		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iconsole.module.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iconsole.module.libpath">
+			<src path="${iconsole.module.src}"/>
+		</javac>
+		
 	</target>
 
-	<target name="jar" depends="compile">
-		<jar jarfile="idumo.jar">
-			<fileset dir="${icore.bin}" includes="**/*.class" />
-			<fileset dir="${icore.src}" includes="**/*.java" />
-			<zipgroupfileset dir="${icore.lib}" includes="*.jar" />
-			<fileset dir="${iandroid.bin}" includes="**/*" />
-			<fileset dir="${iandroid.src}" includes="**/*.java" />
+	<target name="deploy-test" depends="compile">
+		<jar jarfile="idumo-java-android.jar">
+			<fileset dir="${icore.vm.bin}" includes="**/*.class" />
+			<fileset dir="${icore.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.vm.lib}" includes="*.jar" />
+			<fileset dir="${icore.module.bin}" includes="**/*.class" />
+			<fileset dir="${icore.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.module.lib}" includes="*.jar" />
+			
+			<fileset dir="${iandroid.vm.bin}" includes="**/*.class" />
+			<fileset dir="${iandroid.vm.src}" includes="**/*.java" />
+			<fileset dir="${iandroid.module.bin}" includes="**/*.class" />
+			<fileset dir="${iandroid.module.src}" includes="**/*.java" />
 			<!--
 			<fileset dir="${iandroid.res}" includes="**/*" />
 			<fileset dir="${iandroid.gen}" includes="**/*.java" />
 			-->
 			<!--TODO <zipgroupfileset dir="${iandroid.lib}" includes="*.jar" /> -->
-			<fileset dir="${iconsole.bin}" includes="**/*.class" />
-			<fileset dir="${iconsole.src}" includes="**/*.java" />
-			<zipgroupfileset dir="${iconsole.lib}" includes="*.jar" />
 		</jar>
-		<echo message="create idumo.jar"/>
+ 		<move file="idumo-java-android.jar" todir="${iandroid.test.lib}"/>
+		
+		<jar jarfile="idumo-java-console.jar">
+			<fileset dir="${icore.vm.bin}" includes="**/*.class" />
+			<fileset dir="${icore.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.vm.lib}" includes="*.jar" />
+			<fileset dir="${icore.module.bin}" includes="**/*.class" />
+			<fileset dir="${icore.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.module.lib}" includes="*.jar" />
+			
+			<fileset dir="${iconsole.vm.bin}" includes="**/*.class" />
+			<fileset dir="${iconsole.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${iconsole.vm.lib}" includes="*.jar" />
+			<fileset dir="${iconsole.module.bin}" includes="**/*.class" />
+			<fileset dir="${iconsole.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${iconsole.module.lib}" includes="*.jar" />
+		</jar>
+		<move file="idumo-java-console.jar" todir="${iconsole.test.lib}"/>
 	</target>
 
 	<path id="javadoc.libpath">
