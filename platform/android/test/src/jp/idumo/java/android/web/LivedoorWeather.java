@@ -1,14 +1,13 @@
 package jp.idumo.java.android.web;
 
-import jp.idumo.android.core.exec.AndroidComponent;
-import jp.idumo.android.core.exec.AndroidWrapper;
-import jp.idumo.android.core.util.AndroidLogger;
-import jp.idumo.android.parts.provider.AndroidGPSProvider;
-import jp.idumo.android.parts.receiptor.AndroidMapViewReceiptor;
-import jp.idumo.android.parts.receiptor.AndroidTextViewReceiptor;
-import jp.idumo.common.parts.provider.LivedoorWeatherProvider;
-import jp.idumo.core.exception.IDUMOException;
-import jp.idumo.core.util.LogManager;
+import jp.idumo.java.android.core.exec.AndroidComponent;
+import jp.idumo.java.android.core.exec.AndroidWrapper;
+import jp.idumo.java.android.core.util.AndroidLogger;
+import jp.idumo.java.android.parts.receiptor.AndroidTextViewReceiptor;
+import jp.idumo.java.exception.IDUMOException;
+import jp.idumo.java.parts.provider.LivedoorWeatherProvider;
+import jp.idumo.java.util.LogManager;
+
 
 public class LivedoorWeather extends AndroidWrapper {
 	@Override

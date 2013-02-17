@@ -20,7 +20,6 @@ package jp.idumo.java.console.receiptor;
 import jp.idumo.java.exception.IDUMOException;
 import jp.idumo.java.model.IfDataElement;
 import jp.idumo.java.model.FlowingData;
-import jp.idumo.java.model.IfTextElement;
 import jp.idumo.java.model.connect.ConnectDataType;
 import jp.idumo.java.model.connect.SingleConnectDataType;
 import jp.idumo.java.parts.IfExecutable;
@@ -56,7 +55,7 @@ public class ConsoleViewReceiptor implements IfReceivable, IfExecutable {
 		// IDUMODataPrimitive data = (IDUMODataPrimitive) flowdata.next();
 		// System.out.println(data.getValue());
 		for (IfDataElement idumoData : flowdata) {
-			System.out.println(((IfTextElement) idumoData).getText());
+			System.out.println(idumoData.getText());
 		}
 		// IDUMOData data = (IDUMOData) flowdata.next();
 		// System.out.println(data);
