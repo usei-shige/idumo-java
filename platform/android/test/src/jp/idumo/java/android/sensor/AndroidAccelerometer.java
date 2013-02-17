@@ -1,10 +1,10 @@
 package jp.idumo.java.android.sensor;
 
-import jp.idumo.android.core.exec.AndroidComponent;
-import jp.idumo.android.core.exec.AndroidWrapper;
-import jp.idumo.android.parts.provider.AndroidAccelerometerProvider;
-import jp.idumo.android.parts.receiptor.AndroidTextViewReceiptor;
-import jp.idumo.core.exception.IDUMOException;
+import jp.idumo.java.android.core.exec.AndroidComponent;
+import jp.idumo.java.android.core.exec.AndroidWrapper;
+import jp.idumo.java.android.parts.provider.AndroidAccelerometerProvider;
+import jp.idumo.java.android.parts.receiptor.AndroidTextViewReceiptor;
+import jp.idumo.java.exception.IDUMOException;
 
 public class AndroidAccelerometer extends AndroidWrapper {
 	@Override

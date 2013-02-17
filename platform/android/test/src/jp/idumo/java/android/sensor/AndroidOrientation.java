@@ -1,10 +1,10 @@
 package jp.idumo.java.android.sensor;
 
-import jp.idumo.android.core.exec.AndroidComponent;
-import jp.idumo.android.core.exec.AndroidWrapper;
-import jp.idumo.android.parts.provider.AndroidOrientationProvider;
-import jp.idumo.android.parts.receiptor.AndroidTextViewReceiptor;
-import jp.idumo.core.exception.IDUMOException;
+import jp.idumo.java.android.core.exec.AndroidComponent;
+import jp.idumo.java.android.core.exec.AndroidWrapper;
+import jp.idumo.java.android.parts.provider.AndroidOrientationProvider;
+import jp.idumo.java.android.parts.receiptor.AndroidTextViewReceiptor;
+import jp.idumo.java.exception.IDUMOException;
 
 public class AndroidOrientation extends AndroidWrapper {
 	@Override
