@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
 
+    <!-- enviroment setting -->
+	<property name="android.lib"  value="${android.path}/platforms/android-8/android.jar:${android.path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+   	<property name="annotation"   value="${android.path}/tools/support/annotations.jar"/>
+	
+    
 	<!-- global setting -->
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.6"/>
