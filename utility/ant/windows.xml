@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+	<!-- special setting -->
+	<property name="android.path" value="C:\Program Files (x86)\Android\android-sdk/"/>
+	<property name="java.home"    value="C:\Program Files (x86)\Java\jdk1.6.0_23\"/>
+	<property name="java.tools"   value="${java.home}\lib\tools.jar"/>
+
+	<import file="common.xml"/>
+	
+</project>
+	
