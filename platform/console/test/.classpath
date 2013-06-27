@@ -5,7 +5,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="lib" path="libs/jdom.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/idumo-java-console.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ConsoleModule"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ConsoleVM"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

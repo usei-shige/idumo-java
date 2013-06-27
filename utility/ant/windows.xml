@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project>
 	<!-- special setting -->
-	<property name="android.path" value="C:\android\sdk\"/>
+	<property name="android.path" value="C:\Users\Yusei\android-sdks"/>
 	<property name="java.home"    value="C:\Program Files\Java\jdk1.6.0_43\"/>
 	<property name="java.tools"   value="C:\Program Files\Java\jdk1.6.0_43\lib\tools.jar"/>
 	
