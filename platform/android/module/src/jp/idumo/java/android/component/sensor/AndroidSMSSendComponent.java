@@ -1,6 +1,6 @@
 package jp.idumo.java.android.component.sensor;
 
-import android.telephony.SmsManager;
+import android.telephony.gsm.SmsManager;
 import jp.idumo.java.android.core.AndroidActivityResource;
 
 public class AndroidSMSSendComponent {
