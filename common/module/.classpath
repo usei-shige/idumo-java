@@ -2,7 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="libs/jdom.jar"/>
+=======
+>>>>>>> systembranch
 	<classpathentry combineaccessrules="false" kind="src" path="/JavaVM"/>
+	<classpathentry kind="lib" path="libs/jdom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
