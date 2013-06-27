@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="libs/guava-r09.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JavaModule"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AndroidVM"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JavaVM"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
