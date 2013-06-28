@@ -11,13 +11,17 @@ import android.os.BatteryManager;
 
 public class AndroidBatteryComponent extends BroadcastReceiver {
 
-	
-
 	private AndroidBatteryModel model;
 	private boolean isReady;
 	private boolean isRegister;
 	private boolean isInit;
 	private Activity activity;
+	
+	public AndroidBatteryComponent() {
+		isReady = false;
+		isRegister = false;
+		isInit = false;
+	}
 
 	public void register() {
 		if(!isRegister) {
