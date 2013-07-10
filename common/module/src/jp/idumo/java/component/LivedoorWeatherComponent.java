@@ -18,7 +18,6 @@
 package jp.idumo.java.component;
 
 import java.io.IOException;
-
 import jp.idumo.java.model.LivedoorWeatherModel;
 import jp.idumo.java.util.URL2XMLParser;
 
@@ -37,10 +36,20 @@ import org.jdom.JDOMException;
  * @author Hiroyoshi HOUCHI
  * @version 2.0
  * 
+ * LivedoorWeatherの仕様変更に伴い，改変しました．
+ * お天気Webサービス使用 - Weather Hacks - livedoor 天気情報
+ * http://weather.livedoor.com/weather_hacks/webservice
+ * http://weather.livedoor.com/forecast/webservice/json/v1?city=400040
+ * まだ書いてる途中です．．．
+ * 
+ * @author Yusei SHIGENOBU
+ * @version 3.0
+ * 
  */
 public class LivedoorWeatherComponent {
 	
 	private static final String REQUEST_URL_SEED = "http://weather.livedoor.com/forecast/webservice/rest/v1?day=today&city=%d";
+//	private static final String REQUEST_URL_SEED = "http://weather.livedoor.com/forecast/webservice/json/v1?city=%d";
 	
 	private String requestURL;
 	
