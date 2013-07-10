@@ -26,6 +26,10 @@ public class AndroidBatteryProvider implements IfSendable, IfAndroidController, 
 		battery = new AndroidBatteryComponent();
 	}
 
+	public AndroidBatteryProvider() {
+		battery = new AndroidBatteryComponent();
+	}
+	
 	@Override
 	public boolean isReady() {
 		return battery.isReady();
@@ -64,7 +68,8 @@ public class AndroidBatteryProvider implements IfSendable, IfAndroidController, 
 	public FlowingData onCall() {
 		LogManager.log();
 		FlowingData p = new FlowingData();
-		p.add(battery.getData());
+		AndroidBatteryModel data = battery.getData();
+		p.add(data);
 		return p;
 	}
 
