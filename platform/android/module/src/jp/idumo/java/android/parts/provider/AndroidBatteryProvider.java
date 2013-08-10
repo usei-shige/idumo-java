@@ -25,10 +25,6 @@ public class AndroidBatteryProvider implements IfSendable, IfAndroidController, 
 	public AndroidBatteryProvider() {
 		battery = new AndroidBatteryComponent();
 	}
-
-	public AndroidBatteryProvider() {
-		battery = new AndroidBatteryComponent();
-	}
 	
 	@Override
 	public boolean isReady() {
