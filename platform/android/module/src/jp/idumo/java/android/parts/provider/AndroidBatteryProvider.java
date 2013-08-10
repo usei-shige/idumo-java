@@ -21,10 +21,6 @@ import jp.idumo.java.util.LogManager;
 public class AndroidBatteryProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
 
 	private AndroidBatteryComponent battery;
-	
-	public AndroidBatteryProvider() {
-		battery = new AndroidBatteryComponent();
-	}
 
 	public AndroidBatteryProvider() {
 		battery = new AndroidBatteryComponent();
