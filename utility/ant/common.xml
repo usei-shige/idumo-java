@@ -132,19 +132,22 @@
 	</target>
 
 	<path id="javadoc.libpath">
-		<pathelement location="${icore.bin}"/>
-		<pathelement location="${iandroid.bin}"/>
-		<pathelement location="${iconsole.bin}"/>
+		<pathelement location="${icore.vm.bin}"/>
+		<pathelement location="${icore.module.bin}"/>
+		<pathelement location="${iandroid.vm.bin}"/>
+		<pathelement location="${iandroid.module.bin}"/>
+		<pathelement location="${iconsole.vm.bin}"/>
+		<pathelement location="${iconsole.module.bin}"/>
 	</path>
 
 	<target name="idumoitem" depends="compile">
 		<javadoc access="public" 
-			additionalparam="-encoding UTF-8 -bootclasspath ${android.lib}:${java.tools}" 
+			additionalparam="-encoding UTF-8 -bootclasspath ${android.vm.lib}:${java.tools}" 
 			classpath="${lib}:${annotation}"
 			packagenames="${package}"
 			sourcepath="${src}"
 			>
-			<doclet name="${doclet}" path="${icore.bin}"/>
+			<doclet name="${doclet}" path="${icore.vm.bin}"/>
 		</javadoc>
 		<echo message="create idumoitem.json"/>
 	</target>
@@ -159,13 +162,13 @@
 		<pathelement path="${libs}"/>
 	</path>
 	<path id="javadoc.android.lib">
-		<pathelement path="${android.lib}"/>
+		<pathelement path="${android.vm.lib}"/>
 	</path>
 
 	<target name="android" depends="compile">
 		<javadoc access="public" 
 			encoding="UTF-8"
-			additionalparam="-bootclasspath ${android.lib}:${java.tools}" 
+			additionalparam="-bootclasspath ${android.vm.lib}:${java.tools}" 
 			packagenames="${package}"
 			sourcepathref="javadoc.src"
 			classpathref="javadoc.libs"
@@ -181,7 +184,7 @@
 	<target name="datastructure" depends="compile">
 		<javadoc access="public" 
 			encoding="UTF-8"
-			additionalparam="-bootclasspath ${android.lib}:${java.tools}" 
+			additionalparam="-bootclasspath ${android.vm.lib}:${java.tools}" 
 			packagenames="${package}"
 			sourcepathref="javadoc.src"
 			classpathref="javadoc.libs"
