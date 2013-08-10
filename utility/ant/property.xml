@@ -78,9 +78,9 @@
 	<property name="package"       value="jp.idumo.*"/>
 
 	<!-- doclet -->
-	<property name="doclet"         value="jp.idumo.core.doclet.CreatePartsFile"/>
-	<property name="doclet.android" value="jp.idumo.core.doclet.CreateAndroidSettingFile"/>
-	<property name="doclet.datastructure" value="jp.idumo.core.doclet.CreateDataStructureFile"/>
+	<property name="doclet"         value="jp.idumo.java.doclet.CreatePartsFile"/>
+	<property name="doclet.android" value="jp.idumo.java.doclet.CreateAndroidSettingFile"/>
+	<property name="doclet.datastructure" value="jp.idumo.java.doclet.CreateDataStructureFile"/>
 	  
 
 	<path id="icore.vm.libpath">
