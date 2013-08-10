@@ -94,6 +94,42 @@
 		</jar>
 		<move file="idumo-java-console.jar" todir="${iconsole.test.lib}"/>
 	</target>
+	
+	<target name="androidjar" depends="compile">
+	    <jar jarfile="idumo-java-android.jar">
+			<fileset dir="${icore.vm.bin}" includes="**/*.class" />
+			<fileset dir="${icore.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.vm.lib}" includes="*.jar" />
+			<fileset dir="${icore.module.bin}" includes="**/*.class" />
+			<fileset dir="${icore.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.module.lib}" includes="*.jar" />
+			
+			<fileset dir="${iandroid.vm.bin}" includes="**/*.class" />
+			<fileset dir="${iandroid.vm.src}" includes="**/*.java" />
+			<fileset dir="${iandroid.module.bin}" includes="**/*.class" />
+			<fileset dir="${iandroid.module.src}" includes="**/*.java" />
+		</jar>
+		<echo message="create idumo-java-android.jar"/>
+	</target>
+	
+	<target name="consolejar" depends="compile">
+	    <jar jarfile="idumo-java-console.jar">
+			<fileset dir="${icore.vm.bin}" includes="**/*.class" />
+			<fileset dir="${icore.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.vm.lib}" includes="*.jar" />
+			<fileset dir="${icore.module.bin}" includes="**/*.class" />
+			<fileset dir="${icore.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${icore.module.lib}" includes="*.jar" />
+			
+			<fileset dir="${iconsole.vm.bin}" includes="**/*.class" />
+			<fileset dir="${iconsole.vm.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${iconsole.vm.lib}" includes="*.jar" />
+			<fileset dir="${iconsole.module.bin}" includes="**/*.class" />
+			<fileset dir="${iconsole.module.src}" includes="**/*.java" />
+			<zipgroupfileset dir="${iconsole.module.lib}" includes="*.jar" />
+		</jar>
+		<echo message="create idumo-java-console.jar"/>
+	</target>
 
 	<path id="javadoc.libpath">
 		<pathelement location="${icore.bin}"/>
