@@ -85,7 +85,9 @@
 
 	<path id="icore.vm.libpath">
 		<pathelement location="${java.tools}"/>
-		<fileset dir="${icore.vm.lib}" includes="**/*.jar"/>
+		<fileset dir="${icore.vm.lib}">
+		     <include name="**/*.jar" />
+		</fileset>
 	</path>
 	<path id="iandroid.vm.libpath">
 		<pathelement location="${android.path}/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
