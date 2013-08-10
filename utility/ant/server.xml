@@ -3,7 +3,7 @@
 	<!-- special setting -->
 	<property name="android.path" value="/home/idumo/android/"/>
 	<property name="java.home"    value="/usr/lib/jvm/java-6-sun-1.6.0.35/"/>
-	<property name="java.tools"   value="${java.home}/lib/tools.jar"/>
+	<property name="java.tools"   value="/usr/lib/jvm/java-6-sun-1.6.0.35/lib/tools.jar"/>
 
 	<import file="common.xml"/>
 
