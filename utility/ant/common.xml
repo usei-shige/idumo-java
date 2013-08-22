@@ -142,7 +142,7 @@
 
 	<target name="idumoitem" depends="compile">
 		<javadoc access="public" 
-			additionalparam="-encoding UTF-8 -bootclasspath ${android.vm.lib}:${java.tools}" 
+			additionalparam="-encoding UTF-8 -bootclasspath ${android.lib}:${java.tools}" 
 			classpath="${lib}:${annotation}"
 			packagenames="${package}"
 			sourcepath="${src}"
@@ -168,7 +168,7 @@
 	<target name="android" depends="compile">
 		<javadoc access="public" 
 			encoding="UTF-8"
-			additionalparam="-bootclasspath ${android.vm.lib}:${java.tools}" 
+			additionalparam="-bootclasspath ${android.lib}:${java.tools}" 
 			packagenames="${package}"
 			sourcepathref="javadoc.src"
 			classpathref="javadoc.libs"
@@ -184,7 +184,7 @@
 	<target name="datastructure" depends="compile">
 		<javadoc access="public" 
 			encoding="UTF-8"
-			additionalparam="-bootclasspath ${android.vm.lib}:${java.tools}" 
+			additionalparam="-bootclasspath ${android.lib}:${java.tools}" 
 			packagenames="${package}"
 			sourcepathref="javadoc.src"
 			classpathref="javadoc.libs"
