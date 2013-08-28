@@ -162,7 +162,7 @@
 		<pathelement path="${libs}"/>
 	</path>
 	<path id="javadoc.android.lib">
-		<pathelement path="${android.vm.lib}"/>
+		<pathelement path="${android.lib}"/>
 	</path>
 
 	<target name="android" depends="compile">
