@@ -75,7 +75,7 @@
 	<property name="lib"           value="${icore.vm.lib}:${icore.module.lib}:${iandroid.vm.lib}:${iandroid.module.lib}:${iconsole.vm.lib}:${iconsole.module.lib}"/>
 	<property name="bin"           value="${icore.vm.bin}:${icore.module.bin}:${iandroid.vm.bin}:${iandroid.module.bin}:${iconsole.vm.bin}:${iconsole.module.bin}"/>
 	
-	<property name="package"       value="jp.idumo.*"/>
+	<property name="package"       value="jp.idumo.java.*"/>
 
 	<!-- doclet -->
 	<property name="doclet"         value="jp.idumo.java.doclet.CreatePartsFile"/>
