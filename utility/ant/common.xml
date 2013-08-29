@@ -33,14 +33,14 @@
 		<echo message="build android"/>
 		<mkdir dir="${iandroid.vm.bin}"/>
 		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iandroid.vm.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iandroid.vm.libpath">
-			<src path="${iandroid.vm.gen}"/>
-			<src path="${iandroid.vm.src}"/>
+		<!--	<src path="${iandroid.vm.gen}"/>
+-->			<src path="${iandroid.vm.src}"/>
 		</javac>
 		
 		<mkdir dir="${iandroid.module.bin}"/>
 		<javac debug="true" includeantruntime="false" debuglevel="${debuglevel}" destdir="${iandroid.module.bin}" source="${source}" target="${target}" encoding="UTF-8" classpathref="iandroid.module.libpath">
-			<src path="${iandroid.module.gen}"/>
-			<src path="${iandroid.module.src}"/>
+		<!--	<src path="${iandroid.module.gen}"/>
+-->			<src path="${iandroid.module.src}"/>
 		</javac>
 				
 		<!-- console -->
