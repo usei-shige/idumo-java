@@ -54,9 +54,9 @@ public class AndroidAnnotation extends SpecicalAnnotation {
 	
 	public static AndroidAnnotation getDefault() {
 		AndroidAnnotation annotation = new AndroidAnnotation();
-		EnumArrayValue library = new EnumArrayValue("jp.idumo.android.manifest.AndroidLibrary");
+		EnumArrayValue library = new EnumArrayValue("jp.idumo.java.android.manifest.AndroidLibrary");
 		library.add("MAPS");
-		EnumArrayValue permission = new EnumArrayValue("jp.idumo.android.manifest.AndroidPermission");
+		EnumArrayValue permission = new EnumArrayValue("jp.idumo.java.android.manifest.AndroidPermission");
 		permission.add("INTERNET");
 		annotation.items.put(LIBRARIES, library);
 		annotation.items.put(PERMISSIONS, permission);
