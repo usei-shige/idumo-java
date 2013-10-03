@@ -1,0 +1,32 @@
+package jp.idumo.java.android.model;
+
+import jp.idumo.java.model.IfDataElement.AbstractData;
+import jp.idumo.java.model.raw.NumberRawDataType;
+import jp.idumo.java.model.raw.StringRawDataType;
+
+/**
+ * 
+ * @author Yusei SHIGENOBU
+ *
+ * Modelファイルのテンプレートです．
+ * ProviderやHandlerが何かデータを取得し，それを整形したりする場合に使用します．
+ * 作成するProviderやHandlerが特にデータを取得，整形する必要がない場合必要ないです．
+ * ここでデータを個々の配列として扱うことでデータ構造としても生データとしても扱うIDUMOのデータ授受を実現しています．
+ */
+public class TemplateModel extends AbstractData{
+	public static final String TEMPLATE_STR = "templateStr";
+	public static final String TEMPLATE_NUM = "templateNum";
+	
+	public TemplateModel(String templateStr, int templateNum) {
+		add(new StringRawDataType(TEMPLATE_STR, templateStr, "Template String"));
+		add(new NumberRawDataType(TEMPLATE_NUM, templateNum, "Template Number"));
+	}
+	
+	public String getStatus() {
+		return (String) getValue(TEMPLATE_STR);
+	}
+	
+	public int getTemperature() {
+		return (Integer) getValue(TEMPLATE_NUM);
+	}
+}

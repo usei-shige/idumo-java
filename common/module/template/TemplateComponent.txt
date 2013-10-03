@@ -1,0 +1,76 @@
+package jp.idumo.java.android.component.sensor;
+
+import jp.idumo.java.android.core.AndroidActivityResource;
+import jp.idumo.java.android.model.TemplateModel;
+import android.app.Activity;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.content.IntentFilter;
+
+/**
+ * 
+ * @author Yusei SHIGENOBU
+ * 
+ * Android用Componentファイルのテンプレートです．
+ * Android用のモジュールの実際の処理の部分をここに記述していきます．
+ * ここで何かしらのデータを取得し，加工する必要があるのならば，
+ * Modelファイルへデータを投げることになります．
+ * Android特有の処理などが多々ありますので，既存のComponentを参照しながら
+ * 継承やインテントの受け渡しなどに注意して作成してください．
+ *
+ */
+
+public class TemplateComponent  {
+
+	private TemplateModel model;
+	private boolean isReady;
+	private boolean isRegister;
+	private boolean isInit;
+	private Activity activity;
+	
+	public TemplateComponent() {
+		isReady = false;
+		isRegister = false;
+		isInit = false;
+	}
+
+	public void register() {
+		if(!isRegister) {
+			isRegister = true;
+		}
+	}
+
+	public void init(AndroidActivityResource activityResource) {
+		isInit = true;
+		this.activity = activityResource.getActivity();
+	}
+
+	public void unregister() {
+		if(isRegister) {
+		}
+	}
+
+	public TemplateModel getData() {
+		return model;
+	}
+
+	public boolean isReady() {
+		return isReady;
+	}
+
+	public boolean isInit() {
+		return isInit;
+	}
+
+/* 
+ *　public void onReceive(Context context, Intent intent) {
+ *
+ *		ここに何かしらの処理を記述　
+ *	 	モジュールによってここの書き方は様々なので，既存のComponent等を参照していただければと思います．
+ *
+ *　		処理の結果データの整形等が必要ならばここでModelクラスへ処理を投げることになります
+ *		model = new TemplateModel(null, 0);
+ *	}
+ */
+}
+
