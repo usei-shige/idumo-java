@@ -1,0 +1,72 @@
+package jp.idumo.java.parts.handler;
+
+import java.util.List;
+
+import jp.idumo.java.annotation.IDUMOCommon;
+import jp.idumo.java.annotation.IDUMOHandler;
+import jp.idumo.java.annotation.IDUMOInfo;
+import jp.idumo.java.exception.IDUMOException;
+import jp.idumo.java.model.FlowingData;
+import jp.idumo.java.model.connect.ArrayConnectDataType;
+import jp.idumo.java.model.connect.ConnectDataType;
+import jp.idumo.java.model.connect.SingleConnectDataType;
+import jp.idumo.java.parts.IfReceivable;
+import jp.idumo.java.parts.IfSendable;
+import jp.idumo.java.util.LogManager;
+import jp.idumo.java.validator.ReceiveValidatorSize;
+
+/**
+ * @author Yusei SHIGENOBU
+ * 
+ * Handlerモジュールのテンプレートです．
+ * 細かい詳細は既にある他のHandlerモジュールを参考に作成をしてください．
+ * 
+ * Providerや他のHandlerからデータを受け取り，そのデータを用いた処理や，そのデータを成型するモジュールがHandlerに該当します．
+ * 
+ * このHandlerクラスを起点にHandlerモジュールが動作していきます．
+ * モジュールの機能によってはTemplateModelを使用しない場合や，TemplateComponentを使用しない場合もあります．
+ * その場合は各自でクラスを消去等してください．
+ * 
+ */
+@IDUMOCommon
+@IDUMOHandler(receive = TemplateModel.class, send = TemplateModel.class)
+@IDUMOInfo(author = "作成者", display = "モジュール名", summary = "モジュール機能の説明等")
+public class TemplateHandler implements IfSendable, IfReceivable {
+	
+	private TemplateComponent		template	= new TemplateComponent();
+	private IfSendable				sender;
+	private ReceiveValidatorSize	vSize		= new ReceiveValidatorSize(1);
+	
+	@Override
+	public boolean isReady() {
+		return true;
+	}
+	
+	@Override
+	public FlowingData onCall() {
+		LogManager.log();
+		FlowingData p = new FlowingData();
+		// リストで複数のデータを取得する場合Listを使用
+		List<TemplateModel> data = template.getData();
+		for (TemplateModel d : data) {
+			p.add(d);
+		}
+		return p;
+	}
+	
+	@Override
+	public ConnectDataType receivableType() {
+		return new SingleConnectDataType(TemplateModel.class);
+	}
+	
+	@Override
+	public ConnectDataType sendableType() {
+		return new ArrayConnectDataType(TemplateModel.class);
+	}
+	
+	@Override
+	public void setSender(IfSendable... senders) throws IDUMOException {
+		vSize.validate(senders);
+		sender = senders[0];
+	}
+}

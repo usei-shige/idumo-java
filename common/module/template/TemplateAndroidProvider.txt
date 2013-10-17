@@ -1,0 +1,85 @@
+package jp.idumo.java.android.parts.provider;
+
+import jp.idumo.java.android.annotation.IDUMOAndroid;
+import jp.idumo.java.android.component.sensor.TemplateComponent;
+import jp.idumo.java.android.core.AndroidActivityResource;
+import jp.idumo.java.android.core.IfAndroidActivityController;
+import jp.idumo.java.android.core.IfAndroidController;
+//import jp.idumo.java.android.manifest.AndroidPermission;
+import jp.idumo.java.android.model.TemplateModel;
+import jp.idumo.java.annotation.IDUMOInfo;
+import jp.idumo.java.annotation.IDUMOProvider;
+import jp.idumo.java.model.FlowingData;
+import jp.idumo.java.model.connect.ConnectDataType;
+import jp.idumo.java.model.connect.SingleConnectDataType;
+import jp.idumo.java.parts.IfSendable;
+import jp.idumo.java.util.LogManager;
+
+/**
+ * @author Yusei SHIGENOBU
+ *
+ * Androidアプリ用のProviderモジュールのテンプレートです．
+ * 細かい詳細は既に作成してある他のProvider等を参考に作成してください．
+ * このProviderを起点にIDUMOのモジュールは動作し，ComponentやModelと連携します．
+ * 
+ */
+
+@IDUMOAndroid(permissions = { /*AndroidPermission.BATTERY_STATSなど必要なパーミッションがあれば記入*/ })
+@IDUMOProvider(send = TemplateModel.class)
+@IDUMOInfo(author = "作成者", display = "モジュール名", summary = "モジュールの詳細")
+public class TemplateProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
+
+	private TemplateComponent template;
+
+	public TemplateProvider() {
+		template = new TemplateComponent();
+	}
+	
+	@Override
+	public boolean isReady() {
+		return template.isReady();
+	}
+
+	@Override
+	public void onIdumoStart() {}
+
+	@Override
+	public void onIdumoStop() {}
+
+	@Override
+	public void registActivity(AndroidActivityResource activity) {
+		if(!template.isInit()) {
+			template.init(activity);
+		}
+	}
+
+	@Override
+	public void onIdumoDestroy() {}
+
+	@Override
+	public void onIdumoPause() {
+		template.unregister();
+	}
+
+	@Override
+	public void onIdumoRestart() {}
+
+	@Override
+	public void onIdumoResume() {
+		template.register();
+	}
+
+	@Override
+	public FlowingData onCall() {
+		LogManager.log();
+		FlowingData p = new FlowingData();
+		TemplateModel data = template.getData();
+		p.add(data);
+		return p;
+	}
+
+	@Override
+	public ConnectDataType sendableType() {
+		return new SingleConnectDataType(TemplateModel.class);
+	}
+}

@@ -1,85 +1,80 @@
-package jp.idumo.java.android.parts.provider;
+/**
+ * Copyright (c) <2012>, <Hiroyoshi Houchi> All rights reserved.
+ *
+ * http://www.hixi-hyi.com/
+ *
+ * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the  following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * The names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package jp.idumo.java.parts.provider;
 
-import jp.idumo.java.android.annotation.IDUMOAndroid;
-import jp.idumo.java.android.component.sensor.TemplateComponent;
-import jp.idumo.java.android.core.AndroidActivityResource;
-import jp.idumo.java.android.core.IfAndroidActivityController;
-import jp.idumo.java.android.core.IfAndroidController;
-//import jp.idumo.java.android.manifest.AndroidPermission;
-import jp.idumo.java.android.model.TemplateModel;
+import jp.idumo.java.annotation.IDUMOCommon;
+import jp.idumo.java.annotation.IDUMOConstructor;
 import jp.idumo.java.annotation.IDUMOInfo;
 import jp.idumo.java.annotation.IDUMOProvider;
+import jp.idumo.java.component.TemplateComponent;
+import jp.idumo.java.exception.IDUMORuntimeException;
 import jp.idumo.java.model.FlowingData;
+import jp.idumo.java.model.TemplateModel;
 import jp.idumo.java.model.connect.ConnectDataType;
 import jp.idumo.java.model.connect.SingleConnectDataType;
 import jp.idumo.java.parts.IfSendable;
-import jp.idumo.java.util.LogManager;
 
 /**
  * @author Yusei SHIGENOBU
  *
- * Androidアプリ用のProviderモジュールのテンプレートです．
+ * Providerモジュールのテンプレートです．
  * 細かい詳細は既に作成してある他のProvider等を参考に作成してください．
  * このProviderを起点にIDUMOのモジュールは動作し，ComponentやModelと連携します．
  * 
  */
 
-@IDUMOAndroid(permissions = { /*AndroidPermission.BATTERY_STATSなど必要なパーミッションがあれば記入*/ })
+@IDUMOCommon
 @IDUMOProvider(send = TemplateModel.class)
-@IDUMOInfo(author = "作成者", display = "モジュール名", summary = "モジュールの詳細")
-public class TemplateProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
-
-	private TemplateComponent template;
-
-	public TemplateProvider() {
-		template = new TemplateComponent();
+@IDUMOInfo(author = "作成者", display = "モジュール名", summary = "モジュールの概要")
+public class TemplateProvider implements IfSendable {
+	
+	private TemplateComponent	template;
+	
+	// 値を入力する場合は@IDUMOConstructorを使用します．
+	// WebAPI上でユーザが任意で入力する入力ボックスを生成できます．
+	@IDUMOConstructor({ "入力値名" })
+	public TemplateProvider(int num) {
+		try {
+			template = new TemplateComponent(num);
+		} catch (Exception e) {
+			throw new IDUMORuntimeException(e);
+		}
 	}
 	
 	@Override
 	public boolean isReady() {
-		return template.isReady();
-	}
-
-	@Override
-	public void onIdumoStart() {}
-
-	@Override
-	public void onIdumoStop() {}
-
-	@Override
-	public void registActivity(AndroidActivityResource activity) {
-		if(!template.isInit()) {
-			template.init(activity);
+		try {
+			return template.isReady();
+		} catch (Exception e) {
+			throw new IDUMORuntimeException(e);
 		}
 	}
-
-	@Override
-	public void onIdumoDestroy() {}
-
-	@Override
-	public void onIdumoPause() {
-		template.unregister();
-	}
-
-	@Override
-	public void onIdumoRestart() {}
-
-	@Override
-	public void onIdumoResume() {
-		template.register();
-	}
-
+	
 	@Override
 	public FlowingData onCall() {
-		LogManager.log();
 		FlowingData p = new FlowingData();
-		TemplateModel data = template.getData();
-		p.add(data);
+		p.add(template.getData());
 		return p;
 	}
-
+	
 	@Override
 	public ConnectDataType sendableType() {
 		return new SingleConnectDataType(TemplateModel.class);
 	}
+	
 }

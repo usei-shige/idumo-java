@@ -18,21 +18,19 @@ import java.io.IOException;
  */
 
 public class CreateTemplateProvider {
-//	private static final String CURRENT_PACKAGE = CreateTemplateProvider.class.getPackage().getName();
 	private static String Current_Path = new File("").getAbsolutePath();
 	private static final String DELETE_STRING = "common/module";
-	private static final String ADD_STRING = "platform/android/module/src/jp/idumo/java/android/";
+	private static final String ADD_STRING = "common/module/src/jp/idumo/java/";
 	private static int index = Current_Path.indexOf(DELETE_STRING);
 	private static String Root_Path = Current_Path.substring(0, index);
 	private static String Copy_Path = Root_Path + ADD_STRING;
 	
 	public static void main(String[] args) {
-//		System.out.println(Copy_Path);
 		String Template_PPath = Current_Path + "/template/TemplateProvider.txt";
 		String Template_CPath = Current_Path + "/template/TemplateComponent.txt";
 		String Template_MPath = Current_Path + "/template/TemplateModel.txt";
 		String Provider_Path  = Copy_Path + "parts/provider/TemplateProvider.java";
-		String Component_Path = Copy_Path + "component/sensor/TemplateComponent.java";
+		String Component_Path = Copy_Path + "component/TemplateComponent.java";
 		String Model_Path     = Copy_Path + "model/TemplateModel.java";
 		
 		try {
