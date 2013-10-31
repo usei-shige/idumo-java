@@ -1,6 +1,9 @@
 package jp.idumo.java.component;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,16 +33,18 @@ public class NihonTVNewsComponent  {
 	private static final String REQUEST_URL_SEED = "http://appli.ntv.co.jp/ntv_WebAPI/news/?key=" + API_KEY + "&word=%s";
 	
 	private String requestURL;
+	private String encodeWord;
 	private ArrayList<NihonTVNewsModel> list;
 	private boolean isReady;
 	
 	private URL2XMLParser parser;
 	
-	public NihonTVNewsComponent(String word) {
-		init(word);
+	public NihonTVNewsComponent(String word) throws UnsupportedEncodingException {
+		encodeWord = URLEncoder.encode(word, "sjis");
+		init(encodeWord);
 	}
 	
-	private void init(String word) {
+	private void init(String word) throws UnsupportedEncodingException {
 		requestURL = String.format(REQUEST_URL_SEED, word);
 		list = new ArrayList<NihonTVNewsModel>();
 		try {
