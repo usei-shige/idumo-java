@@ -138,6 +138,16 @@
             </intent-filter>
         </activity>
         
+        <activity 
+            android:name=".view.AndroidBrowserTest"
+            android:label="View/AndroidBrowserTest" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                
+                <category android:name="android.intent.category.IDUMO_SAMPLES" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name=".web.LivedoorWeather"
             android:label="Web/LivedoorWeather" >
