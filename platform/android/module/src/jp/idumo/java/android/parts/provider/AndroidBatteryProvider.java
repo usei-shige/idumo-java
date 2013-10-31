@@ -21,7 +21,11 @@ import jp.idumo.java.util.LogManager;
 public class AndroidBatteryProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
 
 	private AndroidBatteryComponent battery;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 980e9aa0c33ac4344ee131d2b94ed95b2b4d3668
 	public AndroidBatteryProvider() {
 		battery = new AndroidBatteryComponent();
 	}
