@@ -18,7 +18,6 @@ import jp.idumo.java.validator.ReceiveValidatorSize;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.widget.TextView;
 
 /**
  * Android上でブラウザを呼び出すReceiptorです
@@ -33,6 +32,7 @@ import android.widget.TextView;
 public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAndroidActivityController {
 	
 	private Activity             activity;
+	private Intent               intnt;
 	private IfSendable           sender;
 	private ReceiveValidatorSize vSize	= new ReceiveValidatorSize(1);
 	
@@ -56,13 +56,9 @@ public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAn
 		}
 		Uri uri = Uri.parse(sb.toString());
 		LogManager.debug(sb.toString());
-		startBrws(uri);
+		intnt = new Intent(Intent.ACTION_VIEW, uri);
 	}
 	
-	private void startBrws(Uri uri) {
-		Intent i = new Intent(Intent.ACTION_VIEW, uri);
-		activity.startActivity(i);
-	}
 
 	@Override
 	public void setSender(IfSendable... handler) throws IDUMOException {
@@ -72,7 +68,8 @@ public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAn
 	
 	@Override
 	public void registActivity(AndroidActivityResource activity) {
-//		activity.getActivity().getIntent();
+		this.activity = activity.getActivity();
+//		this.intnt = this.activity.getIntent();
 	}
 	
 }
