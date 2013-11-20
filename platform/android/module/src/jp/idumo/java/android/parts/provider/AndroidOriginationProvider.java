@@ -1,5 +1,6 @@
 package jp.idumo.java.android.parts.provider;
 
+import android.view.View;
 import jp.idumo.java.android.annotation.IDUMOAndroid;
 import jp.idumo.java.android.component.sensor.AndroidOriginationComponent;
 import jp.idumo.java.android.core.AndroidActivityResource;
@@ -13,6 +14,7 @@ import jp.idumo.java.model.connect.ConnectDataType;
 import jp.idumo.java.model.connect.SingleConnectDataType;
 import jp.idumo.java.model.primitive.IfStringPrimitiveElement;
 import jp.idumo.java.parts.IfSendable;
+import jp.idumo.java.util.LogManager;
 
 
 @IDUMOAndroid()
@@ -21,19 +23,36 @@ import jp.idumo.java.parts.IfSendable;
 public class AndroidOriginationProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
 
 	private AndroidOriginationComponent origination;
+	private View view;
+	private boolean isClick;
+	
+	public AndroidOriginationProvider() {
+		origination = new AndroidOriginationComponent();
+	}
 	
 	@Override
 	public boolean isReady() {
 		return origination.isReady();
 	}
+	
+	public boolean isClick() {
+		isClick = origination.isClick();
+		return isClick;
+	}
 
 	@Override
 	public FlowingData onCall() {
-		// IDUMOLogManager.log();
+		LogManager.log();
+		origination.onClick(view);
 		FlowingData p = new FlowingData();
-		AndroidOriginationModel data = origination.getData();
-		p.add(data);
-		return p;
+		if(isClick()) {
+			AndroidOriginationModel data = origination.getData();
+			p.add(data);
+			return p;
+		} else {
+			onCall();
+			return null;
+		}
 	}
 
 	@Override
@@ -50,6 +69,9 @@ public class AndroidOriginationProvider implements IfSendable, IfAndroidControll
 	@Override
 	public void registActivity(AndroidActivityResource activity) {
 		if(!origination.isInit()) {
+			LogManager.log();
+			view = new View(activity.getActivity());
+			activity.getActivity().setContentView(view);
 			origination.init(activity);
 		}
 	}
@@ -64,6 +86,8 @@ public class AndroidOriginationProvider implements IfSendable, IfAndroidControll
 	public void onIdumoRestart() {}
 
 	@Override
-	public void onIdumoResume() {}
-
+	public void onIdumoResume() {
+		LogManager.log();
+		origination.resister();
+	}
 }
