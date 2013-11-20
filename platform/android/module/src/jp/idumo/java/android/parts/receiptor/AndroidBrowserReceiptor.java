@@ -3,6 +3,7 @@ package jp.idumo.java.android.parts.receiptor;
 import jp.idumo.java.android.annotation.IDUMOAndroid;
 import jp.idumo.java.android.core.IfAndroidActivityController;
 import jp.idumo.java.android.core.AndroidActivityResource;
+import jp.idumo.java.android.manifest.AndroidPermission;
 import jp.idumo.java.annotation.IDUMOInfo;
 import jp.idumo.java.annotation.IDUMOReceiptor;
 import jp.idumo.java.exception.IDUMOException;
@@ -26,7 +27,7 @@ import android.net.Uri;
  * @author Yusei SHIGENOBU
  * 
  */
-@IDUMOAndroid
+@IDUMOAndroid(permissions = { AndroidPermission.INTERNET })
 @IDUMOReceiptor(receive = IfDataElement.class)
 @IDUMOInfo(author = "Yusei SHIGENOBU", display = "URLをブラウザに表示", summary = "受け取ったURLをブラウザに表示する")
 public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAndroidActivityController {
@@ -55,7 +56,7 @@ public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAn
 			sb.append(d.getText());
 		}
 		Uri uri = Uri.parse(sb.toString());
-		LogManager.debug(sb.toString());
+		LogManager.debug(uri);
 		intnt = new Intent(Intent.ACTION_VIEW, uri);
 	}
 	

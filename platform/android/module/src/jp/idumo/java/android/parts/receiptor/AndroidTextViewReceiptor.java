@@ -32,6 +32,7 @@ import jp.idumo.java.parts.IfReceivable;
 import jp.idumo.java.parts.IfSendable;
 import jp.idumo.java.util.LogManager;
 import jp.idumo.java.validator.ReceiveValidatorSize;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
 /**
@@ -85,6 +86,7 @@ public class AndroidTextViewReceiptor implements IfReceivable, IfExecutable, IfA
 		view = new TextView(activity.getActivity());
 		activity.getActivity().setContentView(view);
 		view.setTextSize(30.0f);
+		view.setMovementMethod(ScrollingMovementMethod.getInstance());
 	}
 	
 }
