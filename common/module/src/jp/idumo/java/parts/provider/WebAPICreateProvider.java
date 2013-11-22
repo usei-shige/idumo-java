@@ -38,8 +38,8 @@ import jp.idumo.java.parts.IfSendable;
  *
  */
 
-//@IDUMOCommon
-//@IDUMOProvider(send = WebAPICreateModel.class)
+@IDUMOCommon
+@IDUMOProvider(send = WebAPICreateModel.class)
 //@IDUMOInfo(author = "Yusei SHIGENOBU", display = "WebAPIの情報をパース", summary = "WebAPIにアクセスしてデータを成型するモジュール")
 public class WebAPICreateProvider implements IfSendable {
 	

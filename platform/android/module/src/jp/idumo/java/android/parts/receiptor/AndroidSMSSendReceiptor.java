@@ -21,7 +21,7 @@ import jp.idumo.java.validator.ReceiveValidatorSize;
 
 @IDUMOAndroid(permissions = { AndroidPermission.SEND_SMS })
 @IDUMOReceiptor(receive= IfBoolPrimitiveElement.class)
-@IDUMOInfo(author = "Yusei SHIGENOBU", display = "SMSの送信", summary = "AndroidからSMSを送信します")
+//@IDUMOInfo(author = "Yusei SHIGENOBU", display = "SMSの送信", summary = "AndroidからSMSを送信します")
 public class AndroidSMSSendReceiptor implements IfReceivable, IfExecutable, IfAndroidActivityController{
 
 	private AndroidSMSSendComponent	sms;

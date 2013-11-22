@@ -19,7 +19,7 @@ import jp.idumo.java.util.LogManager;
 
 @IDUMOAndroid()
 @IDUMOProvider(send = IfStringPrimitiveElement.class)
-@IDUMOInfo(author = "Yusei SHIGENOBU", display = "検索ワードを入力", summary = "起動時に検索ワードを決め，次のモジュールへ送信")
+//@IDUMOInfo(author = "Yusei SHIGENOBU", display = "検索ワードを入力", summary = "起動時に検索ワードを決め，次のモジュールへ送信")
 public class AndroidOriginationProvider implements IfSendable, IfAndroidController, IfAndroidActivityController{
 
 	private AndroidOriginationComponent origination;

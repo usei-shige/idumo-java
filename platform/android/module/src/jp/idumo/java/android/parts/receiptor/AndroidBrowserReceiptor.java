@@ -29,7 +29,7 @@ import android.net.Uri;
  */
 @IDUMOAndroid(permissions = { AndroidPermission.INTERNET })
 @IDUMOReceiptor(receive = IfDataElement.class)
-@IDUMOInfo(author = "Yusei SHIGENOBU", display = "URLをブラウザに表示", summary = "受け取ったURLをブラウザに表示する")
+//@IDUMOInfo(author = "Yusei SHIGENOBU", display = "URLをブラウザに表示", summary = "受け取ったURLをブラウザに表示する")
 public class AndroidBrowserReceiptor implements IfReceivable, IfExecutable, IfAndroidActivityController {
 	
 	private Activity             activity;
