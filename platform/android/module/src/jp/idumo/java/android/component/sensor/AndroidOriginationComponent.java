@@ -88,7 +88,7 @@ public class AndroidOriginationComponent implements View.OnClickListener{
 		activity.setContentView(layout);
 		LogManager.log();
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		LogManager.log();
