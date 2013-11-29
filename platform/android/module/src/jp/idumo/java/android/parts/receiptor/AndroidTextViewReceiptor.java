@@ -83,9 +83,10 @@ public class AndroidTextViewReceiptor implements IfReceivable, IfExecutable, IfA
 	
 	@Override
 	public void registActivity(AndroidActivityResource activity) {
+		LogManager.log();
 		view = new TextView(activity.getActivity());
 		activity.getActivity().setContentView(view);
-		view.setTextSize(30.0f);
+		view.setTextSize(24.0f);
 		view.setMovementMethod(ScrollingMovementMethod.getInstance());
 	}
 	

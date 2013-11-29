@@ -2,6 +2,7 @@ package jp.idumo.java.android.component.sensor;
 
 import jp.idumo.java.android.core.AndroidActivityResource;
 import jp.idumo.java.android.model.AndroidBatteryModel;
+import jp.idumo.java.util.LogManager;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,10 +26,12 @@ public class AndroidBatteryComponent extends BroadcastReceiver {
 
 	public void register() {
 		if(!isRegister) {
+			LogManager.log();
 			isRegister = true;
 			IntentFilter filter = new IntentFilter();
 			filter.addAction(Intent.ACTION_BATTERY_CHANGED);
 			activity.registerReceiver(this, filter);
+			LogManager.log();
 		}
 	}
 
@@ -59,7 +62,7 @@ public class AndroidBatteryComponent extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
-
+		LogManager.log();
 		if(action.equals(Intent.ACTION_BATTERY_CHANGED)){
 			String status = "";
 			int statusStr = intent.getIntExtra("status", 0);
@@ -86,6 +89,7 @@ public class AndroidBatteryComponent extends BroadcastReceiver {
 			int scale = intent.getIntExtra("scale", 0);
 			int temperature = intent.getIntExtra("temperature", 0);
 			model = new AndroidBatteryModel(status, plug, level, scale, temperature);
+			LogManager.log();
 		}		
 	}
 }
