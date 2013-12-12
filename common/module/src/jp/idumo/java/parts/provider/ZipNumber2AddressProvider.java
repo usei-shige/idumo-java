@@ -16,7 +16,7 @@ import jp.idumo.java.parts.IfSendable;
 
 @IDUMOCommon
 @IDUMOProvider(send = ZipNumber2AddressModel.class)
-@IDUMOInfo(author = "Yusei SHIGENOBU", display = "住所を取得", summary = "指定した郵便番号から住所を取得する")
+//@IDUMOInfo(author = "Yusei SHIGENOBU", display = "住所を取得", summary = "指定した郵便番号から住所を取得する")
 public class ZipNumber2AddressProvider implements IfSendable {
 	private ZipNumber2AddressComponent	zip;
 	
